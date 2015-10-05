@@ -1,4 +1,5 @@
 
-public interface Tablero {
-
+public interface Tablero 
+{
+	public void mostrar();
 }

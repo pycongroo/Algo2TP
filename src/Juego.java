@@ -5,22 +5,20 @@ import java.util.Scanner;
 
 public abstract class Juego 
 {
-	private String nombre;	
-	private List<Ficha> fichas;
-	private Tablero tablero;
+	protected String nombre;	
+	protected List<Ficha> fichas;
+	protected Tablero tablero;
 	
 	Jugador jugador1;
 	Jugador jugador2;
 	
 	
-	public Juego(String nombre, Tablero tablero, List<Ficha> fichas)
-	{
-		this.nombre = nombre;
-		this.tablero = tablero;
-		this.fichas = fichas;
-	}
 	
+	public abstract Movimiento crearMovimiento(Jugador jugador, int casillero);
 	
+	public abstract void crearTablero();
+	
+	public abstract void gestionarFichas();
 
 
 	public Jugador jugador1() 
@@ -34,7 +32,21 @@ public abstract class Juego
 	}
 	
 	
+	public void setNombre(String nombre) 
+	{
+		this.nombre = nombre;
+	}
 	
+	
+	public void crearJugador1(String nombreJugador) 
+	{
+		jugador1 = new Jugador(nombreJugador);		
+	}
+	
+	public void crearJugador2(String nombreJugador) 
+	{
+		jugador2 = new Jugador(nombreJugador);		
+	}
 	
 	
 	
@@ -54,7 +66,7 @@ public abstract class Juego
 		
 		System.out.println("Es el turno de "+jugador+"!\n");
 		
-		this.mostrarTablero();
+		tablero.mostrar();
 		
 		System.out.println("Ingrese el número de casillero donde quiera depositar su ficha: ");
 		
@@ -66,40 +78,15 @@ public abstract class Juego
 			
 			movimiento = this.crearMovimiento(jugador, casillero);
 			
-			esMovimientoValido = this.esMovimientoValido(movimiento);
+			esMovimientoValido = movimiento.esValido();
 			
 			if(!esMovimientoValido)
 				System.out.println("Ese movimiento no es válido! Ingrese el casillero otra vez:");
 		}
 		
-		return movimiento;		
+		return movimiento;
 	}
 
-
-
-
-	public void mostrarTablero() 
-	{
-		// TODO Auto-generated method stub		
-	}
-
-
-
-
-	public Movimiento crearMovimiento(Jugador jugador, int casillero) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-	public boolean esMovimientoValido(Movimiento movimiento) 
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 
 
@@ -108,7 +95,7 @@ public abstract class Juego
 	{
 		if(movimiento.esMovimientoFinal())
 		{
-			this.mostrarTablero();
+			tablero.mostrar();
 			
 			System.out.println("El jugador "+jugador+" es el ganador!!\n");
 			
@@ -116,6 +103,14 @@ public abstract class Juego
 		}
 		
 		return false;
-	}	
+	}
 
 }
+
+
+
+
+
+
+
+
