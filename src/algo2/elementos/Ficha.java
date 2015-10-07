@@ -1,13 +1,12 @@
+package algo2.elementos;
 
 public class Ficha
 {
-	Jugador jugador;
-	String simbolo;
+	protected String simbolo;
 	
 	
-	public Ficha(Jugador jugador, String simbolo)
+	public Ficha(String simbolo)
 	{
-		this.jugador = jugador;
 		this.simbolo = simbolo;
 	}
 	

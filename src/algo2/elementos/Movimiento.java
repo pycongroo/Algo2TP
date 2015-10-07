@@ -1,3 +1,6 @@
+package algo2.elementos;
+import algo2.exceptions.MovimientoInvalidoException;
+
 
 public abstract class Movimiento 
 {	

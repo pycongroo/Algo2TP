@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+package algo2.elementos;
+
+
 import java.util.Scanner;
 
 
@@ -9,8 +10,8 @@ public abstract class Juego
 
 	protected Tablero tablero;
 	
-	Jugador jugador1;
-	Jugador jugador2;
+	protected Jugador jugador1;
+	protected Jugador jugador2;
 	
 	
 	
@@ -29,8 +30,6 @@ public abstract class Juego
 	
 	public Movimiento gestionarMovimiento(Jugador jugador)
 	{
-		Scanner scanner = new Scanner(System.in);	
-		
 		Movimiento movimiento = null;
 		
 		System.out.println("Es el turno de "+jugador+"!\n");
@@ -39,10 +38,12 @@ public abstract class Juego
 		
 		System.out.println("Ingrese el número de casillero donde quiera depositar su ficha: ");
 		
-		boolean esMovimientoValido = false;
+		boolean esMovimientoValido;
 		
-		while(!esMovimientoValido)
-		{			
+		Scanner scanner = new Scanner(System.in);
+		
+		do
+		{	
 			int casillero = scanner.nextInt();
 			
 			Ficha ficha = jugador.dameFicha();
@@ -57,8 +58,12 @@ public abstract class Juego
 			catch(Exception ex)
 			{
 				System.out.println("Ese movimiento no es válido! Ingrese el casillero otra vez:");
+				esMovimientoValido = false;
 			}
-		}
+		
+		} while(!esMovimientoValido);
+		
+		scanner.close();
 		
 		return movimiento;
 	}

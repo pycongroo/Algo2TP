@@ -1,6 +1,8 @@
-import java.util.Scanner;
+package algo2.motor;
 
-public class Main 
+import algo2.elementos.*;
+
+public class Motor 
 {
 
 	public static void main(String[] args) 
@@ -16,10 +18,10 @@ public class Main
 		System.out.println("Comienza el juego "+juego+"! "+jugador1+" vs "+jugador2+"! \n");
 		
 		
-		boolean juegoTerminado = false;
+		boolean juegoTerminado;
 		Movimiento movimiento;
 		
-		while(!juegoTerminado)
+		do
 		{		
 			movimiento = juego.gestionarMovimiento(jugador1);
 			
@@ -31,7 +33,8 @@ public class Main
 			movimiento = juego.gestionarMovimiento(jugador2);
 			
 			juegoTerminado = juego.estaFinalizado(movimiento, jugador2);
-		}
+			
+		} while(!juegoTerminado);
 	}
 
 }

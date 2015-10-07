@@ -1,3 +1,4 @@
+package algo2.elementos;
 
 public abstract class Jugador 
 {

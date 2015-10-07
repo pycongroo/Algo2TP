@@ -1,3 +1,6 @@
+package algo2.elementos;
+import algo2.exceptions.ExcedeLimiteTableroException;
+
 
 public abstract class Tablero 
 {

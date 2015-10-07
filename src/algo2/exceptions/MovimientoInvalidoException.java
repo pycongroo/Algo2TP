@@ -1,3 +1,4 @@
+package algo2.exceptions;
 @SuppressWarnings("serial")
 public class MovimientoInvalidoException extends RuntimeException
 {
