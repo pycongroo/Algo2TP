@@ -6,7 +6,7 @@ import java.util.Scanner;
 public abstract class Juego 
 {
 	protected String nombre;	
-	protected List<Ficha> fichas;
+
 	protected Tablero tablero;
 	
 	Jugador jugador1;
@@ -14,47 +14,16 @@ public abstract class Juego
 	
 	
 	
-	public abstract Movimiento crearMovimiento(Jugador jugador, int casillero);
+	public abstract void crearJugador1(String nombreJugador);
+	
+	public abstract void crearJugador2(String nombreJugador);
+	
+	protected abstract Movimiento crearMovimiento(Ficha ficha, Tablero tablero, int casillero);
 	
 	public abstract void crearTablero();
 	
 	public abstract void gestionarFichas();
 
-
-	public Jugador jugador1() 
-	{
-		return jugador1;
-	}
-	
-	public Jugador jugador2() 
-	{
-		return jugador2;
-	}
-	
-	
-	public void setNombre(String nombre) 
-	{
-		this.nombre = nombre;
-	}
-	
-	
-	public void crearJugador1(String nombreJugador) 
-	{
-		jugador1 = new Jugador(nombreJugador);		
-	}
-	
-	public void crearJugador2(String nombreJugador) 
-	{
-		jugador2 = new Jugador(nombreJugador);		
-	}
-	
-	
-	
-	@Override
-	public String toString()
-	{
-		return nombre;
-	}
 	
 	
 	
@@ -76,12 +45,19 @@ public abstract class Juego
 		{			
 			int casillero = scanner.nextInt();
 			
-			movimiento = this.crearMovimiento(jugador, casillero);
+			Ficha ficha = jugador.dameFicha();
 			
-			esMovimientoValido = movimiento.esValido();
+			movimiento = this.crearMovimiento(ficha, tablero, casillero);
 			
-			if(!esMovimientoValido)
+			try
+			{
+				movimiento.ejecutate();
+				esMovimientoValido = true;
+			}
+			catch(Exception ex)
+			{
 				System.out.println("Ese movimiento no es válido! Ingrese el casillero otra vez:");
+			}
 		}
 		
 		return movimiento;
@@ -103,6 +79,32 @@ public abstract class Juego
 		}
 		
 		return false;
+	}
+	
+	
+	
+
+	public Jugador jugador1() 
+	{
+		return jugador1;
+	}
+	
+	public Jugador jugador2() 
+	{
+		return jugador2;
+	}
+	
+	
+	public void setNombre(String nombre) 
+	{
+		this.nombre = nombre;
+	}
+	
+	
+	@Override
+	public String toString()
+	{
+		return nombre;
 	}
 
 }

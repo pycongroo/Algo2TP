@@ -1,20 +1,38 @@
 
 public abstract class Movimiento 
 {	
-	private Jugador jugador;
+	protected Ficha ficha;
 	
-	private Tablero tablero;
+	protected Tablero tablero;
 	
-	private int casillero;
+	protected int casillero;
 	
-	public Movimiento(Jugador jugador, Tablero tablero, int casillero)
-	{
-		this.jugador = jugador;
-		this.tablero = tablero;
-		this.casillero = casillero;
-	}
 	
 	public abstract boolean esMovimientoFinal();
 
-	public abstract boolean esValido();
+	protected abstract boolean esInvalido();
+	
+	
+	public Movimiento(Ficha ficha, Tablero tablero, int casillero)
+	{
+		this.ficha = ficha;
+		this.tablero = tablero;
+		this.casillero = casillero;
+	}	
+
+
+	public void ejecutate() 
+	{		
+		if( this.esInvalido() )
+			throw new MovimientoInvalidoException("El movimiento no es válido!!");
+		
+		tablero.ponerFicha(ficha, casillero);
+	}
 }
+
+
+
+
+
+
+
