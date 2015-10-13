@@ -81,7 +81,7 @@ public abstract class Juego
 		{
 			tablero.mostrar();
 			
-			System.out.println("El jugador "+jugador+" es el ganador!!\n");
+			System.out.println("\n\n\t\tEl jugador "+jugador+" es el ganador!!\n");
 			
 			return true;
 		}

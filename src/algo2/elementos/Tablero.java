@@ -32,6 +32,22 @@ public abstract class Tablero
 		
 		tablero[fila][columna] = ficha;
 	}
+	
+	
+	public Ficha getFicha(int casillero)
+	{
+		int columna = casillero % cantidadColumnas;
+		int fila = (casillero - columna) / cantidadColumnas;
+		
+		return this.getFichaPorPosicion(fila, columna);
+	}
+	
+	
+	public Ficha getFichaPorPosicion(int fila, int columna)
+	{
+		return tablero[fila][columna];
+	}
+	
 
 	private boolean esCasilleroFueraDeLimites(int casillero) 
 	{
