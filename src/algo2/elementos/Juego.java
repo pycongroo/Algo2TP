@@ -14,6 +14,9 @@ public abstract class Juego
 	protected Jugador jugador2;
 	
 	
+	Scanner scanner = new Scanner(System.in);
+	
+	
 	
 	public abstract void crearJugador1(String nombreJugador);
 	
@@ -32,15 +35,15 @@ public abstract class Juego
 	{
 		Movimiento movimiento = null;
 		
-		System.out.println("Es el turno de "+jugador+"!\n");
+		System.out.println("\n\n\n\t\tEs el turno de "+jugador+"!\n");
 		
 		tablero.mostrar();
 		
-		System.out.println("Ingrese el número de casillero donde quiera depositar su ficha: ");
+		System.out.println("\n\t\tIngrese el número de casillero donde quiera depositar su ficha: ");
 		
 		boolean esMovimientoValido;
 		
-		Scanner scanner = new Scanner(System.in);
+		//Scanner scanner = new Scanner(System.in);
 		
 		do
 		{	
@@ -57,13 +60,13 @@ public abstract class Juego
 			}
 			catch(Exception ex)
 			{
-				System.out.println("Ese movimiento no es válido! Ingrese el casillero otra vez:");
+				System.out.println("\t\tEse movimiento no es válido! Ingrese el casillero otra vez:");
 				esMovimientoValido = false;
 			}
 		
 		} while(!esMovimientoValido);
 		
-		scanner.close();
+		//scanner.close();
 		
 		return movimiento;
 	}
