@@ -8,7 +8,7 @@ public abstract class Movimiento
 	
 	protected Tablero tablero;
 	
-	protected int casillero;
+	protected Posicion posicion;
 	
 	
 	public abstract boolean esMovimientoFinal();
@@ -16,11 +16,11 @@ public abstract class Movimiento
 	protected abstract boolean esInvalido();
 	
 	
-	public Movimiento(Ficha ficha, Tablero tablero, int casillero)
+	public Movimiento(Ficha ficha, Tablero tablero, Posicion posicion)
 	{
 		this.ficha = ficha;
 		this.tablero = tablero;
-		this.casillero = casillero;
+		this.posicion = posicion;
 	}	
 
 
@@ -29,7 +29,7 @@ public abstract class Movimiento
 		if( this.esInvalido() )
 			throw new MovimientoInvalidoException("El movimiento no es válido!!");
 		
-		tablero.ponerFicha(ficha, casillero);
+		tablero.ponerFicha(ficha, posicion);
 	}
 }
 

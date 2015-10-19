@@ -18,9 +18,9 @@ public class Tateti extends Juego
 	}
 
 	@Override
-	protected Movimiento crearMovimiento(Ficha ficha, Tablero tablero, int casillero) 
+	protected Movimiento crearMovimiento(Ficha ficha, Tablero tablero, Posicion posicion) 
 	{
-		return new MovimientoTateti(ficha, tablero, casillero);
+		return new MovimientoTateti(ficha, tablero, posicion);
 	}
 
 	@Override

@@ -1,4 +1,7 @@
 package algo2.elementos;
+import java.util.ArrayList;
+import java.util.List;
+
 import algo2.exceptions.ExcedeLimiteTableroException;
 
 
@@ -22,35 +25,65 @@ public abstract class Tablero
 	
 	
 	
-	public void ponerFicha(Ficha ficha, int casillero)
+	public void ponerFicha(Ficha ficha, Posicion posicion)
 	{
-		if( esCasilleroFueraDeLimites(casillero) )
+		if( esPosicionFueraDeLimites(posicion) )
 			throw new ExcedeLimiteTableroException("El casillero está fuera de los límites del tablero!!");
 		
-		int columna = casillero % cantidadColumnas;
-		int fila = (casillero - columna) / cantidadColumnas;
 		
-		tablero[fila][columna] = ficha;
+		tablero[posicion.fila()][posicion.columna()] = ficha;
 	}
 	
 	
-	public Ficha getFicha(int casillero)
+	public Ficha getFicha(Posicion posicion)
 	{
-		int columna = casillero % cantidadColumnas;
-		int fila = (casillero - columna) / cantidadColumnas;
-		
-		return this.getFichaPorPosicion(fila, columna);
-	}
-	
-	
-	public Ficha getFichaPorPosicion(int fila, int columna)
-	{
-		return tablero[fila][columna];
+		return tablero[posicion.fila()][posicion.columna()];
 	}
 	
 
-	private boolean esCasilleroFueraDeLimites(int casillero) 
+	private boolean esPosicionFueraDeLimites(Posicion posicion) 
 	{
-		return casillero < 0 || casillero >= (cantidadFilas*cantidadColumnas);
+		return posicion.fila() < 0 || posicion.fila() >= this.cantidadFilas ||
+			   posicion.columna() < 0 || posicion.columna() >= this.cantidadColumnas;
 	}
+
+
+	public Posicion crearPosicion(int casillero) 
+	{
+		int columna = casillero % cantidadColumnas;
+		int fila = (casillero - columna) / cantidadColumnas;
+		
+		return new Posicion(fila, columna);
+	}
+
+
+	public List<Ficha> getFila(int nroFila) 
+	{
+		List<Ficha> fila = new ArrayList<Ficha>();
+		
+		for(int nroColumna = 0; nroColumna < this.cantidadColumnas; nroColumna++)
+		{
+			fila.add( tablero[nroFila][nroColumna] );
+		}
+		
+		return fila;
+	}	
+	
+	
+	public List<Ficha> getColumna(int nroColumna) 
+	{
+		List<Ficha> columna = new ArrayList<Ficha>();
+		
+		for(int nroFila = 0; nroFila < this.cantidadFilas; nroFila++)
+		{
+			columna.add( tablero[nroFila][nroColumna] );
+		}
+		
+		return columna;
+	}	
 }
+
+
+
+
+

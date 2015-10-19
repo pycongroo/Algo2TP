@@ -22,7 +22,7 @@ public abstract class Juego
 	
 	public abstract void crearJugador2(String nombreJugador);
 	
-	protected abstract Movimiento crearMovimiento(Ficha ficha, Tablero tablero, int casillero);
+	protected abstract Movimiento crearMovimiento(Ficha ficha, Tablero tablero, Posicion posicion);
 	
 	public abstract void crearTablero();
 	
@@ -43,15 +43,15 @@ public abstract class Juego
 		
 		boolean esMovimientoValido;
 		
-		//Scanner scanner = new Scanner(System.in);
-		
 		do
 		{	
 			int casillero = scanner.nextInt();
 			
+			Posicion posicion = tablero.crearPosicion(casillero);
+			
 			Ficha ficha = jugador.dameFicha();
 			
-			movimiento = this.crearMovimiento(ficha, tablero, casillero);
+			movimiento = this.crearMovimiento(ficha, tablero, posicion);
 			
 			try
 			{
@@ -64,9 +64,8 @@ public abstract class Juego
 				esMovimientoValido = false;
 			}
 		
-		} while(!esMovimientoValido);
-		
-		//scanner.close();
+		} while(!esMovimientoValido);		
+
 		
 		return movimiento;
 	}
