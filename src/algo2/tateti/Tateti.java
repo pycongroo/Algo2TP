@@ -35,8 +35,8 @@ public class Tateti extends Juego
 		JugadorTateti jugador1 = (JugadorTateti) this.jugador1;
 		JugadorTateti jugador2 = (JugadorTateti) this.jugador2;
 		
-		jugador1.setSimboloFicha("x");
-		jugador2.setSimboloFicha("o");
+		jugador1.setFicha("x", "CIAN");
+		jugador2.setFicha("o", "AMARILLO");
 	}
 
 }

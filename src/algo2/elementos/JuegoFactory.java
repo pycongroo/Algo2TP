@@ -25,7 +25,7 @@ public class JuegoFactory
 	{
 		try
 		{		
-			ResourceBundle rb = ResourceBundle.getBundle("algo2.juego");
+			ResourceBundle rb = ResourceBundle.getBundle("juego");
 			
 			String claseJuego = rb.getString("JUEGO");
 			

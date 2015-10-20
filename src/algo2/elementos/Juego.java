@@ -3,6 +3,8 @@ package algo2.elementos;
 
 import java.util.Scanner;
 
+import algo2.exceptions.*;
+
 
 public abstract class Juego 
 {
@@ -47,18 +49,19 @@ public abstract class Juego
 		{	
 			int casillero = scanner.nextInt();
 			
-			Posicion posicion = tablero.crearPosicion(casillero);
-			
-			Ficha ficha = jugador.dameFicha();
-			
-			movimiento = this.crearMovimiento(ficha, tablero, posicion);
-			
 			try
-			{
+			{			
+				Posicion posicion = tablero.crearPosicion(casillero);
+				
+				Ficha ficha = jugador.dameFicha();
+				
+				movimiento = this.crearMovimiento(ficha, tablero, posicion);			
+
 				movimiento.ejecutate();
+				
 				esMovimientoValido = true;
 			}
-			catch(Exception ex)
+			catch(ExcedeLimiteTableroException | MovimientoInvalidoException ex)
 			{
 				System.out.println("\t\tEse movimiento no es válido! Ingrese el casillero otra vez:");
 				esMovimientoValido = false;

@@ -8,9 +8,9 @@ public class FichaTateti extends Ficha
 	private JugadorTateti jugador;
 	
 
-	public FichaTateti(String simbolo, JugadorTateti jugador)
+	public FichaTateti(String simbolo, String color, JugadorTateti jugador)
 	{
-		super(simbolo);
+		super(simbolo, color);
 		
 		this.jugador = jugador;
 	}

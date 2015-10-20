@@ -65,12 +65,15 @@ public class MovimientoTateti extends Movimiento
 		
 		List<Ficha> segundaDiagonal = tablero.getSegundaDiagonal();
 		
-		if( primerDiagonal.stream().anyMatch(ficha -> ficha == null) ||
-			segundaDiagonal.stream().anyMatch(ficha -> ficha == null) )
-				return false;
-		
-		return primerDiagonal.stream().allMatch(  ficha -> ((FichaTateti) ficha).jugador() == posibleGanador ) ||
-			   segundaDiagonal.stream().allMatch( ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );
+		try
+		{
+			return primerDiagonal.stream().allMatch(  ficha -> ((FichaTateti) ficha).jugador() == posibleGanador ) ||
+				   segundaDiagonal.stream().allMatch( ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );
+		}
+		catch(NullPointerException ex)
+		{
+			return false;
+		}
 	}
 }
 
