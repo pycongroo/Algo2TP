@@ -88,6 +88,15 @@ public abstract class Juego
 			return true;
 		}
 		
+		if(movimiento.esMovimientoEmpate())
+		{
+			tablero.mostrar();
+			
+			System.out.println("\n\n\t\tEl juego termina empatado!!\n");
+			
+			return true;
+		}
+		
 		return false;
 	}
 	

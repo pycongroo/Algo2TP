@@ -37,6 +37,12 @@ public class TableroTateti extends Tablero
 		
 		return diagonal;
 	}
+	
+	
+	public boolean estaLleno()
+	{
+		return todasLasFichas().stream().allMatch(ficha -> ficha != null);
+	}
 }
 
 

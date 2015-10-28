@@ -19,6 +19,13 @@ public class MovimientoTateti extends Movimiento
 		return tablero.getFicha(posicion) != null;
 	}
 	
+	
+	@Override
+	public boolean esMovimientoEmpate() 
+	{
+		return !esMovimientoFinal() && ((TableroTateti) tablero).estaLleno();
+	}
+	
 
 	@Override
 	public boolean esMovimientoFinal() 
@@ -33,12 +40,16 @@ public class MovimientoTateti extends Movimiento
 	{
 		List<Ficha> fila = tablero.getFila(posicion.fila());
 		
-		if( fila.stream().anyMatch( ficha -> ficha == null ) )
-			return false;
-		
 		Jugador posibleGanador = ((FichaTateti) this.ficha).jugador();
 		
-		return fila.stream().allMatch( ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );			
+		try
+		{		
+			return fila.stream().allMatch( ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );	
+		}	
+		catch(NullPointerException ex)
+		{
+			return false;
+		}
 	}
 	
 	
@@ -46,12 +57,16 @@ public class MovimientoTateti extends Movimiento
 	{
 		List<Ficha> columna = tablero.getColumna(posicion.columna());
 		
-		if( columna.stream().anyMatch( ficha -> ficha == null ) )
-			return false;
-		
 		Jugador posibleGanador = ((FichaTateti) this.ficha).jugador();
 		
-		return columna.stream().allMatch( ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );
+		try
+		{
+			return columna.stream().allMatch( ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );
+		}
+		catch(NullPointerException ex)
+		{
+			return false;
+		}
 	}
 	
 	

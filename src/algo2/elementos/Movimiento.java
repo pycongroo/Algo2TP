@@ -12,6 +12,8 @@ public abstract class Movimiento
 	
 	
 	public abstract boolean esMovimientoFinal();
+	
+	public abstract boolean esMovimientoEmpate();
 
 	protected abstract boolean esInvalido();
 	

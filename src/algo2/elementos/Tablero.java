@@ -85,6 +85,19 @@ public abstract class Tablero
 	}	
 	
 	
+	public List<Ficha> todasLasFichas()
+	{
+		List<Ficha> fichas = new ArrayList<Ficha>();
+		
+		for(int nroFila = 0; nroFila < this.cantidadFilas; nroFila++)
+		{
+			fichas.addAll( getFila(nroFila) );
+		}
+		
+		return fichas;
+	}
+	
+	
 	
 	public void mostrar() 
 	{
