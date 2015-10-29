@@ -30,7 +30,8 @@ public class MovimientoTateti extends Movimiento
 	@Override
 	public boolean esMovimientoFinal() 
 	{
-		return this.formaDiagonal() ||
+		return this.forma1raDiagonal() ||
+			   this.forma2daDiagonal() ||
 			   this.formaVertical() ||
 			   this.formaHorizontal();
 	}
@@ -70,7 +71,7 @@ public class MovimientoTateti extends Movimiento
 	}
 	
 	
-	private boolean formaDiagonal()
+	private boolean forma1raDiagonal()
 	{
 		Jugador posibleGanador = ((FichaTateti) this.ficha).jugador();
 		
@@ -78,18 +79,35 @@ public class MovimientoTateti extends Movimiento
 		
 		List<Ficha> primerDiagonal = tablero.getPrimerDiagonal();
 		
-		List<Ficha> segundaDiagonal = tablero.getSegundaDiagonal();
-		
 		try
 		{
-			return primerDiagonal.stream().allMatch(  ficha -> ((FichaTateti) ficha).jugador() == posibleGanador ) ||
-				   segundaDiagonal.stream().allMatch( ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );
+			return primerDiagonal.stream().allMatch(  ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );
 		}
 		catch(NullPointerException ex)
 		{
 			return false;
 		}
 	}
+	
+	
+	private boolean forma2daDiagonal()
+	{
+		Jugador posibleGanador = ((FichaTateti) this.ficha).jugador();
+		
+		TableroTateti tablero = (TableroTateti) this.tablero;
+		
+		List<Ficha> segundaDiagonal = tablero.getSegundaDiagonal();
+		
+		try
+		{
+			return segundaDiagonal.stream().allMatch(  ficha -> ((FichaTateti) ficha).jugador() == posibleGanador );
+		}
+		catch(NullPointerException ex)
+		{
+			return false;
+		}
+	}
+	
 }
 
 
