@@ -16,8 +16,8 @@ public class Motor
 		System.out.println(Extras.completaCadena("hola", "a", 3));
 		System.out.println("Mensaje de prueba: "+Extras.adaptaInt(1, 1331));
 		System.out.println("Mensaje de prueba: "+Extras.adaptaElem("asd", 1331));
-		String cad_inicio = Extras.getStringColored("\n\tComienza el juego "+juego+"! ","PURPURA")+jugador1.toString()+" vs "
-				+jugador2.toString()+Extras.getStringColored("!","PURPURA");
+		String cad_inicio = Extras.getStringColored("\n\tComienza el juego "+juego+"! ","PURPURA")+jugador1+" vs "
+				+jugador2+Extras.getStringColored("!","PURPURA");
 		System.out.println(cad_inicio);
 		
 		Movimiento movimiento;
