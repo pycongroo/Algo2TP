@@ -15,7 +15,11 @@ public class Ficha
 	
 	public String color()
 	{
-		return color;
+		return this.color;
+	}
+	
+	public String simbolo(){
+		return this.simbolo;
 	}
 	
 	

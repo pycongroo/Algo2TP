@@ -1,17 +1,15 @@
-package algo2.tateti;
+package algo2.gokumo;
 
+import algo2.elementos.Extras;
 import algo2.elementos.Ficha;
 import algo2.elementos.Jugador;
-import algo2.elementos.Extras;
+import algo2.tateti.FichaTateti;
 
-public class JugadorTateti extends Jugador
-{
+public class JugadorGokumo extends Jugador {
 	private String simboloFicha;
-	private String colorFicha;
-	
-	
+	private String colorFicha;	
 
-	public JugadorTateti(String nombre) 
+	public JugadorGokumo(String nombre) 
 	{
 		super(nombre);
 	}
@@ -24,7 +22,7 @@ public class JugadorTateti extends Jugador
 	@Override
 	public Ficha dameFicha()
 	{
-		return new FichaTateti(simboloFicha, colorFicha, this);
+		return new FichaGokumo(simboloFicha, colorFicha, this);
 	}
 	
 	
@@ -37,5 +35,4 @@ public class JugadorTateti extends Jugador
 	{
 		this.colorFicha = color;
 	}
-
 }

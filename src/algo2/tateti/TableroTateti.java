@@ -43,6 +43,10 @@ public class TableroTateti extends Tablero
 	{
 		return todasLasFichas().stream().allMatch(ficha -> ficha != null);
 	}
+	
+	private void printarDesface(){
+		System.out.print("\n\t\t");
+	}
 }
 
 

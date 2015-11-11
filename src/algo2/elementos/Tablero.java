@@ -1,10 +1,10 @@
 package algo2.elementos;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import algo2.exceptions.ExcedeLimiteTableroException;
 
+import algo2.elementos.Extras;
 
 
 public abstract class Tablero 
@@ -12,10 +12,7 @@ public abstract class Tablero
 	protected int cantidadFilas;
 	protected int cantidadColumnas;
 	protected Ficha[][] tablero;
-	
-	private HashMap<String, String> colores = new HashMap<String, String>();
-	
-	
+	private int casillero_max;
 	
 	
 	public Tablero(int cantidadFilas, int cantidadColumnas)
@@ -23,10 +20,9 @@ public abstract class Tablero
 		this.cantidadFilas = cantidadFilas;
 		this.cantidadColumnas = cantidadColumnas;
 		tablero = new Ficha[cantidadFilas][cantidadColumnas];
+		casillero_max = cantidadColumnas*cantidadFilas-1;
 		
-		this.inicializarColores();
 	}
-	
 	
 	
 	public void ponerFicha(Ficha ficha, Posicion posicion)
@@ -98,7 +94,6 @@ public abstract class Tablero
 	}
 	
 	
-	
 	public void mostrar() 
 	{
 		for(int nroFila = 0; nroFila < this.cantidadFilas; nroFila++)
@@ -112,28 +107,30 @@ public abstract class Tablero
 	{
 		this.mostrarHorizontal();
 		
-		System.out.print("\n\t\t");
+		this.printarDesface();
 		
 		for(int nroColumna = 0; nroColumna < this.cantidadColumnas; nroColumna++)
 		{
 			this.mostrarCasillero(nroFila, nroColumna);
 		}
 		
-		System.out.println();
+		//System.out.println();
 		
 		this.mostrarHorizontal();
 		
-		System.out.println();
+		//System.out.println();
 	}
-
+	
 
 	private void mostrarHorizontal() 
 	{
-		System.out.print("\t\t");
+		this.printarDesface();
 		
 		for(int nroColumna = 0; nroColumna < this.cantidadColumnas; nroColumna++)
 		{
-			System.out.print( colores.get("BLANCO")+"---"+colores.get("RESET") );
+			//Extras.imprimirEnColor("--", "BLANCO");
+			//String cad_max = Integer.toString(cantidadColumnas*cantidadFilas-1);
+			Extras.imprimirEnColor("-"+Extras.completaCadena("", "-", Integer.toString(casillero_max).length() )+"-", "BLANCO");
 		}
 	}
 	
@@ -142,28 +139,26 @@ public abstract class Tablero
 	{
 		Ficha ficha = this.tablero[nroFila][nroColumna];
 		
-		System.out.print( colores.get("BLANCO")+"|"+colores.get("RESET") );
+		System.out.print(Extras.getStringColored("|", "BLANCO"));
 		
 		if(ficha == null)
-			System.out.print( colores.get("BLANCO")+(nroFila*cantidadColumnas + nroColumna)+colores.get("RESET") );
+			System.out.print(Extras.getStringColored(Extras.adaptaInt(nroFila*cantidadColumnas + nroColumna,casillero_max), "BLANCO"));
 		else
-			System.out.print( colores.get(ficha.color())+ficha+colores.get("RESET") );
+			System.out.print(Extras.getStringColored(Extras.adaptaElem(ficha.simbolo(),casillero_max), ficha.color()));
 		
-		System.out.print( colores.get("BLANCO")+"|"+colores.get("RESET") );
+		System.out.print(Extras.getStringColored("|", "BLANCO"));
 	}
 	
+	private void printarDesface(){
+		System.out.print("\n\t\t");
+	}
 	
-	private void inicializarColores()
-	{
-		colores.put("RESET", "\u001B[0m");
-		colores.put("NEGRO", "\u001B[30m");
-		colores.put("ROJO", "\u001B[31m");
-		colores.put("VERDE", "\u001B[32m");
-		colores.put("AMARILLO", "\u001B[33m");
-		colores.put("AZUL", "\u001B[34m");
-		colores.put("PURPURA", "\u001B[35m");
-		colores.put("CIAN", "\u001B[36m");
-		colores.put("BLANCO", "\u001B[37m");
+	public int getCColumna(){
+		return this.cantidadColumnas;
+	}
+	
+	public int getCFila(){
+		return this.cantidadFilas;
 	}
 }
 

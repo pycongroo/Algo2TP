@@ -13,11 +13,12 @@ public class Motor
 		
 		Jugador jugador1 = juego.jugador1();
 		Jugador jugador2 = juego.jugador2();
-		
-
-		
-		System.out.println("\n\tComienza el juego "+juego+"! "+jugador1+" vs "+jugador2+"! \n");
-		
+		System.out.println(Extras.completaCadena("hola", "a", 3));
+		System.out.println("Mensaje de prueba: "+Extras.adaptaInt(1, 1331));
+		System.out.println("Mensaje de prueba: "+Extras.adaptaElem("asd", 1331));
+		String cad_inicio = Extras.getStringColored("\n\tComienza el juego "+juego+"! ","PURPURA")+jugador1.toString()+" vs "
+				+jugador2.toString()+Extras.getStringColored("!","PURPURA");
+		System.out.println(cad_inicio);
 		
 		Movimiento movimiento;
 		
@@ -25,7 +26,6 @@ public class Motor
 		{		
 			movimiento = juego.gestionarMovimiento(jugador1);
 			
-						
 			if( juego.estaFinalizado(movimiento, jugador1) )
 				break;
 			
