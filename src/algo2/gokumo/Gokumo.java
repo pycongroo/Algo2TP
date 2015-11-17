@@ -41,9 +41,9 @@ public class Gokumo extends Juego {
 		JugadorGokumo jugador1 = (JugadorGokumo) this.jugador1;
 		JugadorGokumo jugador2 = (JugadorGokumo) this.jugador2;
 		
-		jugador1.setFicha("x");
-		jugador1.setColor("CIAN");
-		jugador2.setFicha("o");
-		jugador2.setColor("AMARILLO");
+		jugador1.setFicha("-");
+		jugador1.setColor("ROJO");
+		jugador2.setFicha("*");
+		jugador2.setColor("VERDE");
 	}
 }

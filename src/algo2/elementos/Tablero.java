@@ -20,8 +20,7 @@ public abstract class Tablero
 		this.cantidadFilas = cantidadFilas;
 		this.cantidadColumnas = cantidadColumnas;
 		tablero = new Ficha[cantidadFilas][cantidadColumnas];
-		casillero_max = cantidadColumnas*cantidadFilas-1;
-		
+		casillero_max = cantidadColumnas*cantidadFilas-1;		
 	}
 	
 	

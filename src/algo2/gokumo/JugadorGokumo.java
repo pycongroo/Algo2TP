@@ -5,14 +5,17 @@ import algo2.elementos.Ficha;
 import algo2.elementos.Jugador;
 import algo2.tateti.FichaTateti;
 
-public class JugadorGokumo extends Jugador {
+public class JugadorGokumo extends Jugador 
+{
 	private String simboloFicha;
 	private String colorFicha;	
+	
 
 	public JugadorGokumo(String nombre) 
 	{
 		super(nombre);
 	}
+	
 	
 	public String toString(){
 		return Extras.getStringColored(super.toString(), this.colorFicha);
