@@ -23,7 +23,6 @@ public class Ficha
 	}
 	
 	
-	@Override
 	public String toString()
 	{
 		return simbolo;
