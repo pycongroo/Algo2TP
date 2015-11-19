@@ -95,7 +95,6 @@ public class MovimientoGokumo extends Movimiento {
 	}
 	
 //metodos antiguos
-	//cambiar posiciones por casilleros
 	private boolean algunoForma5(){
 		//List<Integer> casillerosUtiles = (List<Integer>) todosLosCasilleros().stream().
 		//		filter(unCasillero -> ((TableroGokumo) tablero).tieneFichaEn(unCasillero));
@@ -239,109 +238,5 @@ public class MovimientoGokumo extends Movimiento {
 	private boolean mismoEquipo(JugadorGokumo unJugador, ArrayList<Integer> casilleros){
 		return casilleros.stream().allMatch(unCasillero -> ((TableroGokumo) tablero).mismoJugador(unJugador, unCasillero));
 	}
-	/*
-	private boolean diagonal1(int casillero){
-		return formaLinea5(casillero, -9);
-	}
-	
-	private boolean diagonal2(int casillero){
-		return formaLinea5(casillero, 11);
-	}
-	
-	private boolean diagonal3(int casillero){
-		return formaLinea5(casillero, 9);
-	}
-	
-	private boolean diagonal4(int casillero){
-		return formaLinea5(casillero, -11);
-	}
-	//////
-	
-	private boolean horizontal1(int casillero){
-		return formaLinea5(casillero, 1);
-	}
-	
-	private boolean horizontal2(int casillero){
-		return formaLinea5(casillero, 10);
-	}
-	
-	private boolean vertical1(int casillero){
-		return formaLinea5(casillero,-1);
-	}
-	
-	private boolean vertical2(int casillero){
-		return formaLinea5(casillero, -10);
-	}
-	
-	private boolean formaLinea5(int casillero, int tipo){
-		int x = this.posicion.columna();
-		int y = this.posicion.fila();
-		// int c = tablero.getCColumna();
-		// int f = tablero.getCFila();
-		if (cumplePrecondicion(x, y, tipo)){
-			return tiene5fichasEnLinea(casillero, tipo);
-		} else {
-			return false;
-		}
-	}
-	
-	private boolean tiene5fichasEnLinea(int casillero,int tipo){
-		JugadorGokumo posibleGanador = ((FichaGokumo) this.ficha).getJugador(); 
-		List<FichaGokumo> fichas = new ArrayList<FichaGokumo>();
-		int c_actual = casillero+tipo;
-		FichaGokumo ficha_t = (FichaGokumo)tablero.getFicha(tablero.crearPosicion(casillero));
-		fichas.add(ficha_t);
-		// muestreo de listas
-		if (ficha_t!=null) {
-			System.out.println(c_actual);
-		} else {
-			System.out.println("no hay ficha");
-		}
-		while ((c_actual<100 && c_actual>=0) &&
-				((TableroGokumo) tablero).mismoJugador(posibleGanador, c_actual)){
-			System.out.println("aceptado "+ c_actual);
-			ficha_t = (FichaGokumo) tablero.getFicha(tablero.crearPosicion(c_actual));
-			fichas.add(ficha_t);
-			if (ficha_t!=null) {
-				System.out.println(c_actual);
-			} else {
-				System.out.println("no hay ficha");
-			}
-			System.out.println("cantidad de fichas en linea: "+//(c_actual-tipo)+ 
-					" " + fichas.size()+
-					",tipo :"+tipo);
-			c_actual+=tipo;
-		}
-		//System.out.println("cantidad de fichas en linea: "+(c_actual-tipo)+ " " + fichas.size()+
-		//",tipo :"+tipo);
-		return fichas.size()==5;
-	}
-	
-	private boolean cumplePrecondicion(int x, int y,int tipo){
-		int c = tablero.getCColumna();
-		int f = tablero.getCFila();
-		switch (tipo) {
-		case -9:
-			return (x>=0 && x<=c-5) && (y>=5 && y<=f);
-		case 11:
-			return (x>=0 && x<=c-5) && (y>=0 && y<=f-5);
-		case 9:
-			return (x>=5 && x<=c) && (y>=0 && y<=f-5);
-		case -11:
-			return (x>=5 && x<=c) && (y>=5 && y<=f);
-		case 1:
-			return (x>=0 && x<=c-5);
-		case 10:
-			return (y>=0 && y<=f-5);
-		case -1:
-			return (x>=5 && x<=c);
-		case -10:
-			return (y>=5 && y<=f);
-
-		default:
-			return false;
-		}
-	}*/
-	
 
 }
